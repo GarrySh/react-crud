@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Product from '../components/Product';
+import { getAllProducts } from '../API';
 
 export default class Products extends Component {
   state = {
@@ -8,15 +9,12 @@ export default class Products extends Component {
   };
 
   componentDidMount() {
-    const API_URL = 'http://5be2706304cb600013a62006.mockapi.io/api/products';
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(products => {
-        this.setState({
-          products,
-          isLoading: false,
-        });
+    getAllProducts().then(products => {
+      this.setState({
+        products,
+        isLoading: false,
       });
+    });
   }
 
   render() {
@@ -28,7 +26,7 @@ export default class Products extends Component {
         ) : (
           <div className="row">
             {this.state.products.map(product => (
-              <Product key={product.id} product={product} />
+              <Product key={product.id} product={product} cols="col-4" />
             ))}
           </div>
         )}
