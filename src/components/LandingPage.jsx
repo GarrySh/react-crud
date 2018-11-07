@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => (
   <div className="jumbotron">
@@ -13,9 +14,9 @@ const LandingPage = () => (
       container.
     </p>
     <p className="lead">
-      <a className="btn btn-primary btn-lg" href="/" role="button">
+      <Link to="products" className="btn btn-primary btn-lg" href="/" role="button">
         View products
-      </a>
+      </Link>
     </p>
   </div>
 );
