@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import ProductForm from '../components/ProductForm';
+import ProductForm from './ProductForm';
 import { createProduct } from '../API';
 
 class CreateProduct extends Component {

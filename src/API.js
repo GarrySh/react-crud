@@ -12,3 +12,12 @@ export const createProduct = product =>
     },
     body: JSON.stringify(product),
   }).then(res => res.json());
+
+export const updateProduct = (id, product) =>
+  fetch(`${API_URL}/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(product),
+  }).then(res => res.json());

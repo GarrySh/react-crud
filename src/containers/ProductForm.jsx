@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 
 export default class ProductForm extends Component {
   state = {
-    product: {},
+    product: {
+      title: '',
+      description: '',
+      price: '',
+      quantity: 0,
+      image: '',
+    },
   };
+
+  componentDidMount() {
+    this.setState({ product: { ...this.props.product } });
+  }
 
   handleValueChange = event => {
     const { name, value } = event.target;
@@ -33,6 +43,7 @@ export default class ProductForm extends Component {
   };
 
   render() {
+    const { title, description, price, quantity, image } = this.state.product;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -44,6 +55,7 @@ export default class ProductForm extends Component {
               className="form-control"
               name="title"
               id="title"
+              value={title}
               placeholder="Enter product title"
               required
             />
@@ -57,6 +69,7 @@ export default class ProductForm extends Component {
               onChange={this.handleValueChange}
               name="description"
               id="description"
+              value={description}
               placeholder="Enter product description"
               required
             />
@@ -71,6 +84,7 @@ export default class ProductForm extends Component {
               className="form-control"
               name="price"
               id="price"
+              value={price}
               placeholder="Enter product price"
               required
             />
@@ -85,6 +99,7 @@ export default class ProductForm extends Component {
               className="form-control"
               name="quantity"
               id="quantity"
+              value={quantity}
               min="0"
               placeholder="Enter product quantity"
               required
@@ -100,6 +115,7 @@ export default class ProductForm extends Component {
               className="form-control"
               name="image"
               id="image"
+              value={image}
               placeholder="https://example.com/image.jpg"
               required
             />
